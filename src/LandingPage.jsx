@@ -1322,7 +1322,7 @@ const LandingPage = () => {
             <div className="glass-card w-full max-w-sm rounded-2xl border p-3 sm:p-4">
               <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-black/5">
                 <img
-                  src="/images/team/team-photo.jpg"
+                  src="/images/team/team-photo.png"
                   alt={lang === "ru" ? "Команда 2oiyn" : "2oiyn командасы"}
                   className="h-40 w-full object-cover sm:h-48"
                 />
