@@ -1,0 +1,198 @@
+@import "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f8fa;
+  --accent-from: #ff2d2d;
+  --accent-to: #ff0000;
+  --text-primary: #0a0a0a;
+  --text-secondary: #52525b;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "SF Pro Display", "Inter", sans-serif;
+  background: radial-gradient(circle at top, #fff7f7 0, #ffffff 45%, #f8f8fa 100%);
+  color: var(--text-primary);
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, var(--accent-from), var(--accent-to));
+}
+
+.text-gradient-accent {
+  background: linear-gradient(120deg, var(--accent-from), var(--accent-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.hover-lift {
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease, background-color 220ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 26px 80px rgba(239, 68, 68, 0.22);
+  border-color: rgba(248, 113, 113, 0.8);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(36px);
+  opacity: 0.7;
+  background: radial-gradient(circle at 30% 30%, #ff8a8a, #ff2d2d 45%, transparent 70%);
+  animation: floatBlob 16s ease-in-out infinite alternate;
+}
+
+.blob-secondary {
+  background: radial-gradient(circle at 30% 30%, #fecaca, #fb7185 40%, transparent 70%);
+  animation-duration: 20s;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at top, black 0, transparent 65%);
+  opacity: 0.6;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(248, 113, 113, 0.75);
+  box-shadow: 0 0 14px rgba(248, 113, 113, 0.8);
+  animation: floatParticle 14s linear infinite;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInUp 700ms ease forwards;
+}
+
+.fade-in-up-delayed {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInUp 800ms ease forwards;
+  animation-delay: 120ms;
+}
+
+.nav-blur {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.badge-gradient {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+}
+
+.step-badge {
+  background: linear-gradient(135deg, #ff2d2d, #ff0000);
+  color: #ffffff;
+  box-shadow: 0 14px 35px rgba(248, 113, 113, 0.65);
+}
+
+.pricing-popular {
+  border-width: 2px;
+  border-image: linear-gradient(135deg, #ff2d2d, #fb7185) 1;
+  box-shadow: 0 26px 70px rgba(248, 113, 113, 0.36);
+}
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  /* Mobile fallback: ensure sections are visible even if IntersectionObserver timing differs. */
+  .reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .reveal-section.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+}
+
+.accordion-content.open {
+  max-height: 260px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatBlob {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-20px, 18px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(20px, -12px, 0) scale(1.08);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-120px) translateX(40px);
+    opacity: 0;
+  }
+}
+
